@@ -1,3 +1,169 @@
-/*
-Put CSS code here
-*/
+:root {
+  --navy-main: #0A1E32;
+  --navy-alt: #0A283C;
+  --teal-accent: #AAD2DC;
+  --text-light: #F5F7F8;
+  --border: rgba(255, 255, 255, 0.15);
+}
+
+/* BASE */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(180deg, var(--navy-alt), var(--navy-main));
+  color: var(--text-light);
+}
+
+/* HEADER */
+.site-header {
+  background: rgba(10, 30, 50, 0.95);
+  border-bottom: 1px solid var(--border);
+}
+
+/* TOP BAR */
+.top-bar {
+  max-width: 1100px;
+  margin: auto;
+  padding: 15px 20px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+}
+
+/* LOGO BASE */
+.logo-area {
+  will-change: transform;
+}
+
+/* SAVED LOGO SETTINGS */
+.logo-area img {
+  height: 120px;
+  width: auto;
+  display: block;
+  border: 1px solid white;
+  border-radius: 6px;
+  padding: 1px;
+  background-color: white;
+}
+
+/* FLOATING LOGO (TOP LEFT + SHRUNK) */
+.logo-area.logo-floating {
+  position: fixed;
+  top: 12px;
+  left: 20px;
+  z-index: 1200;
+  transform: scale(0.5); /* SHRINK TO HALF */
+}
+
+/* TITLE */
+.title-area {
+  text-align: center;
+}
+
+.title-area h1 {
+  margin: 0;
+  color: var(--teal-accent);
+}
+
+.title-area p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+/* NAV */
+nav {
+  max-width: 1100px;
+  margin: auto;
+  padding: 10px 20px 15px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+}
+
+nav a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+nav a:hover {
+  color: var(--teal-accent);
+}
+
+/* CONTENT */
+main {
+  max-width: 1000px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+section {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 30px;
+  margin-bottom: 40px;
+}
+
+section h2 {
+  color: var(--teal-accent);
+  margin-top: 0;
+}
+
+/* BUTTON */
+.button {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 20px;
+  background: var(--teal-accent);
+  color: #06202f;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 14px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid var(--border);
+  opacity: 0.8;
+}
+
+/* FIXED SPONSORS */
+.fixed-sponsor {
+  position: fixed;
+  bottom: 20px;
+  z-index: 1000;
+}
+
+.fixed-sponsor.oceanbotics {
+  left: 20px;
+  height: 20px;
+}
+
+.fixed-sponsor.rje {
+  right: 10px;
+  height: 120px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  .logo-area img {
+    height: 80px;
+  }
+
+  .logo-area.logo-floating {
+    top: 8px;
+    left: 10px;
+    transform: scale(0.6);
+  }
+}
