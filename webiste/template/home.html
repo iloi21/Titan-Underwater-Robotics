@@ -25,7 +25,6 @@
 
   </div>
 
-  <!-- NAV -->
   <nav>
     <ul>
       <li><a href="#home">Home</a></li>
@@ -39,7 +38,6 @@
 
 <main id="home">
 
-  <!-- HERO -->
   <section>
     <h2>Titan Underwater Robotics AUV</h2>
     <p>
@@ -48,7 +46,6 @@
     </p>
   </section>
 
-  <!-- ABOUT -->
   <section id="about">
     <h2>About Us</h2>
     <p>
@@ -57,34 +54,28 @@
     </p>
   </section>
 
-  <!-- WHAT WE DO -->
   <section id="whatwedo">
     <h2>What We Do</h2>
     <ul>
       <li>Building collaborative underwater robotics projects</li>
       <li>Exploring cutting-edge technologies</li>
       <li>Sharing knowledge, tools, and experience</li>
-      <li>Competing in national and international AUV competitions</li>
+      <li>Competing in AUV competitions</li>
     </ul>
   </section>
 
-  <!-- GALLERY -->
   <section id="gallery">
     <h2>Gallery</h2>
-    <p>📸 AUV development</p>
+    <p>📸 Vehicle development</p>
+    <p>📸 Pool testing</p>
     <p>📸 Team collaboration</p>
-    <p>📸 Competition testing</p>
   </section>
 
-  <!-- JOIN -->
   <section id="join">
     <h2>Join</h2>
     <p>
-      All experience levels are welcome — mechanical, electrical,
+      All experience levels welcome — mechanical, electrical,
       software, and controls.
-    </p>
-    <p>
-      No prior robotics experience required. We’ll teach you.
     </p>
     <a href="mailto:titanunderwater@csuf.edu" class="button">Email Us</a>
   </section>
@@ -95,51 +86,33 @@
   <p>© 2026 Titan Underwater Robotics • CSUF</p>
 </footer>
 
-<!-- FIXED SPONSORS -->
-<img class="fixed-sponsor oceanbotics" src="assets/images/oceanbotics.png" alt="Oceanbotics Logo">
-<img class="fixed-sponsor rje" src="assets/images/rje-international.png" alt="RJE International Logo">
+<!-- FIXED SPONSOR LOGOS -->
+<img
+  src="assets/images/oceanbotics.png"
+  alt="Oceanbotics Logo"
+  class="fixed-sponsor ocean"
+  id="oceanSponsor"
+/>
 
-<!-- LOGO SCROLL SCRIPT (SMOOTH + REVERSIBLE) -->
+<img
+  src="assets/images/rje-international.png"
+  alt="RJE Logo"
+  class="fixed-sponsor rje"
+  id="rjeSponsor"
+/>
+
+<!-- SCROLL SCRIPT (LOGO + SPONSORS) -->
 <script>
+  const ocean = document.getElementById("oceanSponsor");
+  const rje = document.getElementById("rjeSponsor");
   const logo = document.getElementById("teamLogo");
-  let isFloating = false;
-
-  function flip(toFloating) {
-    const first = logo.getBoundingClientRect();
-
-    if (toFloating) {
-      logo.classList.add("logo-floating");
-    } else {
-      logo.classList.remove("logo-floating");
-    }
-
-    const last = logo.getBoundingClientRect();
-
-    const dx = first.left - last.left;
-    const dy = first.top - last.top;
-    const scale = first.width / last.width;
-
-    logo.animate(
-      [
-        { transform: `translate(${dx}px, ${dy}px) scale(${scale})` },
-        { transform: "translate(0, 0) scale(1)" }
-      ],
-      {
-        duration: 400,
-        easing: "cubic-bezier(0.4, 0, 0.2, 1)",
-        fill: "both"
-      }
-    );
-  }
 
   window.addEventListener("scroll", () => {
-    if (window.scrollY > 120 && !isFloating) {
-      isFloating = true;
-      flip(true);
-    } else if (window.scrollY <= 120 && isFloating) {
-      isFloating = false;
-      flip(false);
-    }
+    const active = window.scrollY > 100;
+
+    ocean.classList.toggle("shrink", active);
+    rje.classList.toggle("shrink", active);
+    logo.classList.toggle("logo-shrink", active);
   });
 </script>
 
