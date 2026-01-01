@@ -6,7 +6,7 @@
   --border: rgba(255, 255, 255, 0.15);
 }
 
-/* BASE */
+/* ================= BASE ================= */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -14,13 +14,13 @@ body {
   color: var(--text-light);
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 .site-header {
   background: rgba(10, 30, 50, 0.95);
   border-bottom: 1px solid var(--border);
 }
 
-/* TOP BAR */
+/* ================= TOP BAR ================= */
 .top-bar {
   max-width: 1100px;
   margin: auto;
@@ -30,12 +30,14 @@ body {
   align-items: center;
 }
 
-/* LOGO BASE */
+/* ================= TEAM LOGO ================= */
 .logo-area {
-  will-change: transform;
+  transition:
+    transform 0.3s ease-out,
+    top 0.3s ease-out,
+    left 0.3s ease-out;
 }
 
-/* SAVED LOGO SETTINGS */
 .logo-area img {
   height: 120px;
   width: auto;
@@ -46,16 +48,17 @@ body {
   background-color: white;
 }
 
-/* FLOATING LOGO (TOP LEFT + SHRUNK) */
-.logo-area.logo-floating {
+/* Team logo when scrolling */
+.logo-area.logo-shrink {
   position: fixed;
   top: 12px;
   left: 20px;
+  transform: scale(0.5);
+  transform-origin: top left;
   z-index: 1200;
-  transform: scale(0.5); /* SHRINK TO HALF */
 }
 
-/* TITLE */
+/* ================= TITLE ================= */
 .title-area {
   text-align: center;
 }
@@ -67,24 +70,17 @@ body {
 
 .title-area p {
   margin: 0;
-  font-size: 0.9rem;
   opacity: 0.85;
 }
 
-/* NAV */
-nav {
-  max-width: 1100px;
-  margin: auto;
-  padding: 10px 20px 15px;
-}
-
+/* ================= NAV ================= */
 nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
   justify-content: center;
   gap: 22px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 nav a {
@@ -97,7 +93,7 @@ nav a:hover {
   color: var(--teal-accent);
 }
 
-/* CONTENT */
+/* ================= CONTENT ================= */
 main {
   max-width: 1000px;
   margin: auto;
@@ -114,22 +110,21 @@ section {
 
 section h2 {
   color: var(--teal-accent);
-  margin-top: 0;
 }
 
-/* BUTTON */
+/* ================= BUTTON ================= */
 .button {
   display: inline-block;
   margin-top: 15px;
   padding: 12px 20px;
   background: var(--teal-accent);
   color: #06202f;
-  text-decoration: none;
   font-weight: bold;
+  text-decoration: none;
   border-radius: 14px;
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 footer {
   text-align: center;
   padding: 20px;
@@ -137,33 +132,57 @@ footer {
   opacity: 0.8;
 }
 
-/* FIXED SPONSORS */
+/* ================= SPONSOR LOGOS ================= */
+
+/* Shared behavior (do NOT change size here) */
 .fixed-sponsor {
   position: fixed;
-  bottom: 20px;
+  bottom: 24px;
+  width: auto;
   z-index: 1000;
+  transition: transform 0.25s ease-out;
 }
 
-.fixed-sponsor.oceanbotics {
-  left: 20px;
-  height: 20px;
+/* Oceanbotics (bottom-left) */
+.fixed-sponsor.ocean {
+  left: 24px;
+  height: 50px;
+  transform-origin: bottom left;
 }
 
+/* RJE (bottom-right) */
 .fixed-sponsor.rje {
   right: 10px;
-  height: 120px;
+  height: 200px;
+  transform-origin: bottom right;
 }
 
-/* MOBILE */
+/* Shrink state (applies to both) */
+.fixed-sponsor.shrink {
+  transform: scale(0.5);
+}
+
+/* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
   .logo-area img {
     height: 80px;
   }
 
-  .logo-area.logo-floating {
-    top: 8px;
-    left: 10px;
+  .logo-area.logo-shrink {
+    transform: scale(0.6);
+  }
+
+  /* Mobile sponsor sizes */
+  .fixed-sponsor.ocean {
+    height: 30px;
+  }
+
+  .fixed-sponsor.rje {
+    height: 50px;
+  }
+
+  .fixed-sponsor.shrink {
     transform: scale(0.6);
   }
 }
