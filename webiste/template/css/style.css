@@ -6,7 +6,7 @@
   --border: rgba(255, 255, 255, 0.15);
 }
 
-/* ================= BASE ================= */
+/* BASE */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -14,13 +14,13 @@ body {
   color: var(--text-light);
 }
 
-/* ================= HEADER ================= */
+/* HEADER */
 .site-header {
   background: rgba(10, 30, 50, 0.95);
   border-bottom: 1px solid var(--border);
 }
 
-/* ================= TOP BAR ================= */
+/* TOP BAR */
 .top-bar {
   max-width: 1100px;
   margin: auto;
@@ -30,16 +30,13 @@ body {
   align-items: center;
 }
 
-/* ================= TEAM LOGO ================= */
+/* TEAM LOGO */
 .logo-area {
-  transition:
-    transform 0.3s ease-out,
-    top 0.3s ease-out,
-    left 0.3s ease-out;
+  will-change: transform;
 }
 
 .logo-area img {
-  height: 120px;
+  height: 110px;
   width: auto;
   display: block;
   border: 1px solid white;
@@ -48,8 +45,8 @@ body {
   background-color: white;
 }
 
-/* Team logo when scrolling */
-.logo-area.logo-shrink {
+/* Floating logo */
+.logo-area.logo-floating {
   position: fixed;
   top: 12px;
   left: 20px;
@@ -58,7 +55,7 @@ body {
   z-index: 1200;
 }
 
-/* ================= TITLE ================= */
+/* TITLE */
 .title-area {
   text-align: center;
 }
@@ -73,7 +70,11 @@ body {
   opacity: 0.85;
 }
 
-/* ================= NAV ================= */
+/* NAV */
+nav {
+  padding-bottom: 28px;   /* ✅ EXTRA SPACE BELOW NAV */
+}
+
 nav ul {
   display: flex;
   justify-content: center;
@@ -93,7 +94,7 @@ nav a:hover {
   color: var(--teal-accent);
 }
 
-/* ================= CONTENT ================= */
+/* CONTENT */
 main {
   max-width: 1000px;
   margin: auto;
@@ -112,7 +113,7 @@ section h2 {
   color: var(--teal-accent);
 }
 
-/* ================= BUTTON ================= */
+/* BUTTON */
 .button {
   display: inline-block;
   margin-top: 15px;
@@ -124,7 +125,7 @@ section h2 {
   border-radius: 14px;
 }
 
-/* ================= FOOTER ================= */
+/* FOOTER */
 footer {
   text-align: center;
   padding: 20px;
@@ -132,9 +133,7 @@ footer {
   opacity: 0.8;
 }
 
-/* ================= SPONSOR LOGOS ================= */
-
-/* Shared behavior (do NOT change size here) */
+/* SPONSORS */
 .fixed-sponsor {
   position: fixed;
   bottom: 24px;
@@ -143,46 +142,19 @@ footer {
   transition: transform 0.25s ease-out;
 }
 
-/* Oceanbotics (bottom-left) */
 .fixed-sponsor.ocean {
   left: 24px;
-  height: 50px;
+  height: 37px;
   transform-origin: bottom left;
 }
 
-/* RJE (bottom-right) */
 .fixed-sponsor.rje {
-  right: 10px;
-  height: 200px;
+  right: 0px;
+  bottom: 3px;
+  height: 160px;
   transform-origin: bottom right;
 }
 
-/* Shrink state (applies to both) */
 .fixed-sponsor.shrink {
   transform: scale(0.5);
-}
-
-/* ================= MOBILE ================= */
-@media (max-width: 768px) {
-
-  .logo-area img {
-    height: 80px;
-  }
-
-  .logo-area.logo-shrink {
-    transform: scale(0.6);
-  }
-
-  /* Mobile sponsor sizes */
-  .fixed-sponsor.ocean {
-    height: 30px;
-  }
-
-  .fixed-sponsor.rje {
-    height: 50px;
-  }
-
-  .fixed-sponsor.shrink {
-    transform: scale(0.6);
-  }
 }
