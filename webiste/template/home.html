@@ -86,7 +86,7 @@
   <p>© 2026 Titan Underwater Robotics • CSUF</p>
 </footer>
 
-<!-- FIXED SPONSOR LOGOS -->
+<!-- SPONSOR LOGOS -->
 <img
   src="assets/images/oceanbotics.png"
   alt="Oceanbotics Logo"
@@ -101,18 +101,54 @@
   id="rjeSponsor"
 />
 
-<!-- SCROLL SCRIPT (LOGO + SPONSORS) -->
+<!-- SCROLL LOGIC -->
 <script>
+  const logo = document.getElementById("teamLogo");
   const ocean = document.getElementById("oceanSponsor");
   const rje = document.getElementById("rjeSponsor");
-  const logo = document.getElementById("teamLogo");
+
+  let floating = false;
+
+  function animateLogo(toFloating) {
+    const first = logo.getBoundingClientRect();
+
+    logo.classList.toggle("logo-floating", toFloating);
+
+    const last = logo.getBoundingClientRect();
+
+    const dx = first.left - last.left;
+    const dy = first.top - last.top;
+
+    logo.animate(
+      [
+        {
+          transform: `translate(${dx}px, ${dy}px) scale(${toFloating ? 1 : 0.5})`
+        },
+        {
+          transform: `translate(0, 0) scale(${toFloating ? 0.5 : 1})`
+        }
+      ],
+      {
+        duration: 350,
+        easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+        fill: "both"
+      }
+    );
+  }
 
   window.addEventListener("scroll", () => {
-    const active = window.scrollY > 100;
+    const active = window.scrollY > 60;
 
     ocean.classList.toggle("shrink", active);
     rje.classList.toggle("shrink", active);
-    logo.classList.toggle("logo-shrink", active);
+
+    if (active && !floating) {
+      floating = true;
+      animateLogo(true);
+    } else if (!active && floating) {
+      floating = false;
+      animateLogo(false);
+    }
   });
 </script>
 
