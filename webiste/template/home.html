@@ -1,24 +1,147 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Titan Underwater Robotics AUV</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <div><h1>Titan Underwater Robotics AUV</h1></div>
-    <div><h2>About us</h2></div>
-    <div><p>At the Titan Underwater Robotics Club, our mission is to unite 
-        curious minds passionate about underwater robotics. 
-        Whether you're a seasoned builder or just starting to explore the field, 
-        we welcome your ideas and invite you to dive deep into discovery, collaboration, 
-        and innovation. This club is all about:</p></div>
+
+<header class="site-header">
+  <div class="top-bar">
+
+    <!-- TEAM LOGO -->
+    <div class="logo-area" id="teamLogo">
+      <img src="assets/images/team-logo.webp" alt="Team Logo">
+    </div>
+
+    <!-- TITLE -->
+    <div class="title-area">
+      <h1>Titan Underwater Robotics AUV</h1>
+      <p>California State University, Fullerton</p>
+    </div>
+
+  </div>
+
+  <!-- NAV -->
+  <nav>
     <ul>
-        <li>Building collaborative underwater robotics projects</li>
-        <li>Exploring cutting-edge technologies and engineering principles</li>
-        <li>Sharing knowledge, resources, and expertise in AUV development</li>
-        <li>Engaging in real-world applications, competitions, and research opportunities.</li>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#whatwedo">What We Do</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#join">Join</a></li>
     </ul>
+  </nav>
+</header>
+
+<main id="home">
+
+  <!-- HERO -->
+  <section>
+    <h2>Titan Underwater Robotics AUV</h2>
+    <p>
+      We unite curious minds passionate about underwater robotics.
+      Whether you're experienced or just starting, all are welcome.
+    </p>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>
+      Our mission is to design, build, and compete with autonomous
+      underwater vehicles while learning real-world engineering.
+    </p>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section id="whatwedo">
+    <h2>What We Do</h2>
+    <ul>
+      <li>Building collaborative underwater robotics projects</li>
+      <li>Exploring cutting-edge technologies</li>
+      <li>Sharing knowledge, tools, and experience</li>
+      <li>Competing in national and international AUV competitions</li>
+    </ul>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <h2>Gallery</h2>
+    <p>📸 AUV development</p>
+    <p>📸 Team collaboration</p>
+    <p>📸 Competition testing</p>
+  </section>
+
+  <!-- JOIN -->
+  <section id="join">
+    <h2>Join</h2>
+    <p>
+      All experience levels are welcome — mechanical, electrical,
+      software, and controls.
+    </p>
+    <p>
+      No prior robotics experience required. We’ll teach you.
+    </p>
+    <a href="mailto:titanunderwater@csuf.edu" class="button">Email Us</a>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 Titan Underwater Robotics • CSUF</p>
+</footer>
+
+<!-- FIXED SPONSORS -->
+<img class="fixed-sponsor oceanbotics" src="assets/images/oceanbotics.png" alt="Oceanbotics Logo">
+<img class="fixed-sponsor rje" src="assets/images/rje-international.png" alt="RJE International Logo">
+
+<!-- LOGO SCROLL SCRIPT (SMOOTH + REVERSIBLE) -->
+<script>
+  const logo = document.getElementById("teamLogo");
+  let isFloating = false;
+
+  function flip(toFloating) {
+    const first = logo.getBoundingClientRect();
+
+    if (toFloating) {
+      logo.classList.add("logo-floating");
+    } else {
+      logo.classList.remove("logo-floating");
+    }
+
+    const last = logo.getBoundingClientRect();
+
+    const dx = first.left - last.left;
+    const dy = first.top - last.top;
+    const scale = first.width / last.width;
+
+    logo.animate(
+      [
+        { transform: `translate(${dx}px, ${dy}px) scale(${scale})` },
+        { transform: "translate(0, 0) scale(1)" }
+      ],
+      {
+        duration: 400,
+        easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+        fill: "both"
+      }
+    );
+  }
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 120 && !isFloating) {
+      isFloating = true;
+      flip(true);
+    } else if (window.scrollY <= 120 && isFloating) {
+      isFloating = false;
+      flip(false);
+    }
+  });
+</script>
+
 </body>
 </html>
