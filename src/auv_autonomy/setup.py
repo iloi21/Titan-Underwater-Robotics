@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'auv_thruster_controller'
+package_name = 'auv_autonomy'
 
 setup(
     name=package_name,
@@ -24,6 +24,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
+	'autonomy_node = auv_autonomy.autonomy_node:main',
         ],
     },
 )
